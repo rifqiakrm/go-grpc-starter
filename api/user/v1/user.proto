@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package starter.user.v1;
+
+option go_package = "grpc-starter/api/user/v1;userv1";
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "validate/validate.proto";
+
+service UserService {
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post : "/v1/auth/login",
+      body: "*"
+    };
+  }
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post : "/v1/auth/register",
+      body: "*"
+    };
+  }
+
+  rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse) {
+    option (google.api.http) = {
+      post : "/v1/auth/forgot-password",
+      body: "*"
+    };
+  }
+
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {
+    option (google.api.http) = {
+      put : "/v1/auth/change-password/{token}",
+      body: "*"
+    };
+  }
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  uint32 code = 1;
+  string message = 2;
+  TokenData data = 3;
+}
+
+message TokenData {
+  string user_id = 1;
+  string token = 2;
+}
+
+message RegisterRequest {
+  string username = 1 [(google.api.field_behavior) = REQUIRED, (validate.rules).string.min_len = 1];
+  string email = 2 [(google.api.field_behavior) = REQUIRED, (validate.rules).string.email = true];
+  string phone_number = 3;
+  string password = 4 [(google.api.field_behavior) = REQUIRED, (validate.rules).string.min_len = 8];
+}
+
+message RegisterResponse {
+  uint32 code = 1;
+  string message = 2;
+  TokenData data = 3;
+}
+
+message ForgotPasswordRequest {
+  string email = 1;
+}
+
+message ForgotPasswordResponse {
+  uint32 code = 1;
+  string message = 2;
+  string data = 3;
+}
+
+message ChangePasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message ChangePasswordResponse {
+  uint32 code = 1;
+  string message = 2;
+  string data = 3;
+}

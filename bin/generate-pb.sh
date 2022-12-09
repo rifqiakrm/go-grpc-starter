@@ -1,0 +1,12 @@
+protoc -I . -I=$GOPATH/bin/protoc-gen-validate \
+--go-grpc_out "." \
+--go_out "." \
+--go-vtproto_out "." \
+--grpc-gateway_out "allow_delete_body=true:." \
+--validate_out "lang=go:." \
+--go_opt "paths=source_relative" \
+--go-grpc_opt "paths=source_relative" \
+--go-vtproto_opt "features=marshal+unmarshal+size" \
+--go-vtproto_opt "paths=source_relative" \
+--grpc-gateway_opt "paths=source_relative" \
+--validate_opt "paths=source_relative" api/*/*/*.proto

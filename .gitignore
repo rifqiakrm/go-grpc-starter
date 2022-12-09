@@ -1,0 +1,47 @@
+﻿# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.env
+*.env-*
+.ignored-*
+creds.json
+deploy/*
+main
+cmd/client/*
+token-*.json
+client_secrets.json
+gcp-sa.json
+__debug_bin
+*.pb.*
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+coverage.html
+coverage/
+coverage.out
+
+# Google credential
+google_credential.json
+
+# Vendor
+vendor/
+.idea
+
+#DS_Store
+../../.DS_Store
+../.DS_Store
+.DS_Store
+db/.DS_Store
+script/.DS_Store
+
+report.json
+report_*.html
+report.*
+
+globalVariable.json
