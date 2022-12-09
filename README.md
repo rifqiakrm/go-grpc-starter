@@ -1,8 +1,8 @@
-# GRPC Starter API
+# GRPC Golang Starter API
 
 ## Description
 
-GRPC Starter API is a GRPC microservice that provides a simple and secure way to access GRPC Starter. Build with monorepo, it is easy to use and easy to maintain.
+GRPC Golang Starter API is a GRPC microservice that provides a simple and secure way to access GRPC Starter. Build with monorepo, it is easy to use and easy to maintain.
 
 It comes pre-configured with :
 
